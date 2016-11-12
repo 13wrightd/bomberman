@@ -1,5 +1,5 @@
 var socket = io();
-var players;
+
 
 //socket.emit('initialize');
 socket.on('players update', function(msg){
@@ -40,21 +40,20 @@ addEventListener("keyup", function (e) {
 
 // Draw everything
 var render = function () {
-	if (bgReady) {
-		ctx.drawImage(bgImage, 0, 0);
-	}
-	if (players!= null && players != undefined){
-	for(var i=0; i<players.players.length;i++){
-		//ctx.drawImage(players.players[i].image,players.players[i].x,players.players[i].y);
-		ctx.fillStyle=players.players[i].color;
-		ctx.fillRect(players.players[i].x,players.players[i].y, 32,32);
-	}}
+	// if (bgReady) {
+	// 	ctx.drawImage(bgImage, 0, 0);
+	// }
+	ctx.fillStyle="#9ea7b8";
+	ctx.fillRect(0,0,canvas.width, canvas.height);
+	ctx.fillStyle="#9effff";
+	ctx.fillRect(100,100,canvas.width, canvas.height);
+	
 	// Score
-	ctx.fillStyle = "rgb(250, 250, 250)";
-	ctx.font = "24px Helvetica";
-	ctx.textAlign = "left";
-	ctx.textBaseline = "top";
-	ctx.fillText("score: " , 32, 32);
+	// ctx.fillStyle = "rgb(250, 250, 250)";
+	// ctx.font = "24px Helvetica";
+	// ctx.textAlign = "left";
+	// ctx.textBaseline = "top";
+	//ctx.fillText("score: " , 32, 32);
 };
 
 // The main game loop
