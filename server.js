@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname+ '/index.html');
   console.log('someone loaded homepage');
 });
-app.get('/js/*', function (req, res) {
+app.get('/js/*', function (req, res) {   
   res.sendFile(__dirname+ req.path);
 });
 
@@ -35,6 +35,9 @@ app.get('/bomberman', function (req, res) {
 });
 app.get('/j', function (req, res) {
   res.sendFile(__dirname+ '/j.html');
+});
+app.get('/ben', function (req, res) {
+  res.sendFile(__dirname+ '/ben.html');
 });
 
 
@@ -143,6 +146,13 @@ io.on('connection', function(socket) {
     console.log('someone left');
     io.emit('someone left', socket.id);
     //players.removeBySocketId(socket.id);
+  
+  });
+  socket.on('send message', function(data) {
+    console.log(data);
+
+io.emit('message from server', data);
+
   });
 
   // socket.on('button clicked', function(msg) {
